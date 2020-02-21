@@ -18,7 +18,8 @@
  **To use on Windows:**
  [Download](http://www.storepointofsale.com/download/v1/StorePOS.msi) the MSI Installer
 
-  **Looking for a Desktop Invoicing app?:**
+  **Looking for a Desktop Invoicing app?**
+  
  Check out the [Offline Invoicing](https://github.com/tngoman/Offline_Invoicing) app for freelancers.
 
 **To Customize/Create your own installer**
