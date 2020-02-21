@@ -1,0 +1,70 @@
+.onscreenKeyboard {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #eee;
+    font-size: 24px;
+    line-height: 24px;
+    color: #333;
+    padding-bottom: 10px;
+    -webkit-user-select: none;
+}
+
+.onscreenKeyboard.caps {
+    text-transform: uppercase;
+}
+
+.keyRow {
+    display: table;
+    width: 100%;
+    margin-bottom: -10px;
+	border-spacing: 10px;
+}
+
+.keyRow div {
+    display: table-cell;
+    text-align: center;
+    width: 30px;
+    background: #fff;
+    padding: 7px 0;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    transition: 0.1s;
+}
+
+.keyRow div:hover {
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.1);
+}
+
+.keyRow div:active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #bbb;
+    border-color: #bbb;
+}
+
+.keyRow .space-key {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+}
+
+.keyRow .shift-key,
+.keyRow .space-key,
+.keyRow .delete-key {
+    text-transform: none;
+}
+
+.onscreenKeyboard.caps .keyRow .shift-key {
+    background: #1572e0;
+    color: #fff;
+}
