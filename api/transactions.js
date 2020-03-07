@@ -27,30 +27,6 @@ app.get("/all", function(req, res) {
   });
 });
 
- 
- 
-  transactionsDB.find(
-    { date: { $gte: startDate.toJSON(), $lte: endDate.toJSON() } },
-    function(err, docs) {
-      let result = {
-        date: startDate
-      };
-
-      if (docs) {
-        let total = docs.reduce(function(p, c) {
-          return p + c.total;
-        }, 0.0);
-
-        result.total = parseFloat(parseFloat(total).toFixed(2));
-
-        res.send(result);
-      } else {
-        result.total = 0;
-        res.send(result);
-      }
-    }
-  );
-});
 
 
  
