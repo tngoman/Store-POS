@@ -28,37 +28,7 @@ app.get("/all", function(req, res) {
 });
 
  
-app.get("/limit", function(req, res) {
-  let limit = parseInt(req.query.limit, 10);
-  if (!limit) limit = 5;
-
-  transactionsDB.find({})
-    .limit(limit)
-    .sort({ date: -1 })
-    .exec(function(err, docs) {
-      res.send(docs);
-    });
-});
-
  
-app.get("/day-total", function(req, res) {
-  // if date is provided
-  if (req.query.date) {
-    startDate = new Date(req.query.date);
-    startDate.setHours(0, 0, 0, 0);
-
-    endDate = new Date(req.query.date);
-    endDate.setHours(23, 59, 59, 999);
-  } else {
-    // beginning of current day
-    let startDate = new Date();
-    startDate.setHours(0, 0, 0, 0);
-
-    // end of current day
-    let endDate = new Date();
-    endDate.setHours(23, 59, 59, 999);
-  }
-
   transactionsDB.find(
     { date: { $gte: startDate.toJSON(), $lte: endDate.toJSON() } },
     function(err, docs) {
