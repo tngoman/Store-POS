@@ -23,9 +23,6 @@ app.use(bodyParser.json());
 
 module.exports = app;
 
-
-const Datastore = require( "nedb" );
-const async = require( "async" );
  
 let inventoryDB = new Datastore( {
     filename: process.env.APPDATA+"/POS/server/databases/inventory.db",
