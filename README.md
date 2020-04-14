@@ -1,4 +1,4 @@
-# Store Pint of Sale
+# Store Point of Sale
  Desktop Point of Sale app built with electron
  
   **Features:**
