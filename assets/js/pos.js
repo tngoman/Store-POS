@@ -2025,7 +2025,10 @@ function loadTransactions() {
                             , "info":true
                             , "JQueryUI":true
                             , "ordering":true
-                            , "paging":true                      
+                            , "paging":true,    
+			      "dom":'Bfrtip',
+            		      "buttons":['csv', 'excel', 'pdf',]
+				
                         });                
                     } 
                 });
