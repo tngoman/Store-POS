@@ -15,7 +15,7 @@
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
     "btoa": "^1.2.1",
-    "electron": "^6.0.12",
+    "electron": ">=7.2.4",
     "electron-context-menu": "^0.15.1",
     "electron-store": "^5.1.0",
     "electron-winstaller": "^4.0.0",
