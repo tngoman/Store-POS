@@ -815,7 +815,7 @@ if (auth == undefined) {
                 order_type: 1,
                 items: cart,
                 date: currentTime,
-                payment_type: paymentType,
+                payment_type: type,
                 payment_info: $("#paymentInfo").val(),
                 total: orderTotal,
                 paid: paid,
