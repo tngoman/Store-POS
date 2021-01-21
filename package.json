@@ -35,7 +35,7 @@
     "nodemon": "^1.14.12",
     "path": "^0.12.7",
     "print-js": "^1.0.63",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "sweetalert2": "^9.5.4",
     "xmlhttprequest": "^1.8.0"
   },
