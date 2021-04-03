@@ -6,10 +6,11 @@ const btoa = require('btoa');
 app.use( bodyParser.json() );
 
 module.exports = app;
+const getAppDataPath = require('./utils/getAppDataPath')
 
  
 let usersDB = new Datastore( {
-    filename: process.env.APPDATA+"/POS/server/databases/users.db",
+    filename: getAppDataPath() +"/POS/server/databases/users.db",
     autoload: true
 } );
 

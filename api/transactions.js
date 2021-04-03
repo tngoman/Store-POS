@@ -5,11 +5,12 @@ let Datastore = require("nedb");
 let Inventory = require("./inventory");
 
 app.use(bodyParser.json());
+const getAppDataPath = require('./utils/getAppDataPath')
 
 module.exports = app;
  
 let transactionsDB = new Datastore({
-  filename: process.env.APPDATA+"/POS/server/databases/transactions.db",
+  filename: getAppDataPath() +"/POS/server/databases/transactions.db",
   autoload: true
 });
 

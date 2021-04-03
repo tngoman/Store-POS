@@ -6,10 +6,11 @@ const async = require( "async" );
 const fileUpload = require('express-fileupload');
 const multer = require("multer");
 const fs = require('fs');
+const getAppDataPath = require('./utils/getAppDataPath')
 
 
 const storage = multer.diskStorage({
-    destination: process.env.APPDATA+'/POS/uploads',
+    destination: getAppDataPath() +'/POS/uploads',
     filename: function(req, file, callback){
         callback(null, Date.now() + '.jpg'); // 
     }
@@ -25,7 +26,7 @@ module.exports = app;
 
  
 let inventoryDB = new Datastore( {
-    filename: process.env.APPDATA+"/POS/server/databases/inventory.db",
+    filename: getAppDataPath() +"/POS/server/databases/inventory.db",
     autoload: true
 } );
 
