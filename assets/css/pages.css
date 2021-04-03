@@ -1,29 +1,39 @@
-
-#transactions_view, #pointofsale {
+#transactions_view,
+#pointofsale {
   display: none;
 }
 
-#card-box tr {display: block; }
-#card-box th, #card-box td:first-child{ width: 10px; }
-#card-box th, #card-box td:nth-child(2){ width: 150px; }
+#card-box tr {
+  display: block;
+}
 
-#cartTable tbody { 
-  display: block; 
+#card-box th,
+#card-box td:first-child {
+  width: 10px;
+}
+
+#card-box th,
+#card-box td:nth-child(2) {
+  width: 150px;
+}
+
+#cartTable tbody {
+  display: block;
   height: calc(100vh - 425px);
   overflow: auto;
 }
 
-#parent { 
-  display: block; 
+#parent {
+  display: block;
   height: calc(100vh - 215px);
   overflow: auto;
   overflow: hidden;
 }
 
 
-.order-box{
-background-color: grey;
-color: #FFFFFF;
+.order-box {
+  background-color: grey;
+  color: #FFFFFF;
 }
 
 #parent .box {
@@ -36,28 +46,30 @@ color: #FFFFFF;
 
 #product_img {
   max-height: 80px;
-  border-radius: 50%;
+  border-radius: 5%;
   max-width: 100px;
 }
 
 #reportrange {
-  background: #fff; 
-  cursor: pointer; 
-  padding: 7px 10px; 
-  border: 1px solid #ddd; 
+  background: #fff;
+  cursor: pointer;
+  padding: 7px 10px;
+  border: 1px solid #ddd;
   width: 100%;
   border-radius: 4px;
 
 }
 
-.nobr  { white-space: nowrap;}
+.nobr {
+  white-space: nowrap;
+}
 
 #image {
   height: 80px;
 }
 
 #print_list {
-margin-right: 30px;
+  margin-right: 30px;
 }
 
 #product_name {
@@ -78,7 +90,8 @@ margin-right: 30px;
   font-size: 1.6rem !important;
 }
 
-.del, .prt {
+.del,
+.prt {
   margin-right: 4px !important;
 }
 
@@ -86,48 +99,50 @@ margin-right: 30px;
   font-family: 'Share Tech', sans-serif;
 }
 
-.print-btn{
+.print-btn {
   padding: 10px;
   border-radius: 2px;
 }
 
-@media  print {
+@media print {
   .receipt {
-      font-family: 'Share Tech', sans-serif;
+    font-family: 'Share Tech', sans-serif;
   }
 
-  .print-head{
-      display: none;
+  .print-head {
+    display: none;
   }
 
 }
 
- 
- 
- .chosen-container-single .chosen-single {
-   padding-top: 3px;
-     height: 33px;
-    border-radius: 3px;
-    border: 1px solid #CCCCCC;
+
+
+.chosen-container-single .chosen-single {
+  padding-top: 3px;
+  height: 33px;
+  border-radius: 3px;
+  border: 1px solid #CCCCCC;
 }
+
 .chosen-container-single .chosen-single span {
-    padding-top: 2px;
+  padding-top: 2px;
 }
+
 .chosen-container-single .chosen-single div b {
-    margin-top: 2px;
+  margin-top: 2px;
 }
 
 .chosen-container-active .chosen-single,
 .chosen-container-active.chosen-with-drop .chosen-single {
-    border-color: #ccc;
-    border-color: rgba(82, 168, 236, .8);
-    outline: 0;
-    outline: thin dotted \9;
-    -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
-    box-shadow: 0 0 8px rgba(82, 168, 236, .6)
+  border-color: #ccc;
+  border-color: rgba(82, 168, 236, .8);
+  outline: 0;
+  outline: thin dotted \9;
+  -moz-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+  box-shadow: 0 0 8px rgba(82, 168, 236, .6)
 }
 
- 
+
 #productList {
   width: 100%;
 }
@@ -153,25 +168,26 @@ margin-right: 30px;
 }
 
 #loading {
-  background: rgb(221,221,221);
-  background: radial-gradient(circle, rgba(153,153,153,1) 0%, rgba(221,221,221,1)  100%); 
+  background: rgb(221, 221, 221);
+  background: radial-gradient(circle, rgba(153, 153, 153, 1) 0%, rgba(221, 221, 221, 1) 100%);
   position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 999; 
+  z-index: 999;
   overflow: hidden;
-  display: none;  
+  display: none;
 }
 
 #quit {
   z-index: 9999;
 }
 
-#rmv_logo, #rmv_img {
+#rmv_logo,
+#rmv_img {
   display: none;
 }
 
-#net_settings_form{
+#net_settings_form {
   display: none;
 }
 
@@ -194,7 +210,7 @@ margin-right: 30px;
   overflow-y: scroll;
 }
 
-#total_sales { 
+#total_sales {
   width: 100%;
   color: #666;
   height: 120px;
@@ -203,7 +219,7 @@ margin-right: 30px;
   margin-bottom: 20px;
 }
 
-#total_transactions { 
+#total_transactions {
   width: 100%;
   color: #666;
   height: 120px;
@@ -212,7 +228,7 @@ margin-right: 30px;
   margin-bottom: 20px;
 }
 
-#total_items {   
+#total_items {
   width: 100%;
   color: #666;
   height: 120px;
@@ -221,7 +237,7 @@ margin-right: 30px;
   margin-bottom: 20px;
 }
 
-#total_products {   
+#total_products {
   width: 100%;
   color: #666;
   height: 120px;
@@ -233,7 +249,7 @@ margin-right: 30px;
 #totals h5 {
   text-align: center;
   margin: 10px;
-  color: #fff; 
+  color: #fff;
 }
 
 #counter {
