@@ -1632,7 +1632,7 @@ if (auth == undefined) {
 
             $('#settings_form').append('<input type="hidden" name="app" value="' + formData.app + '" />');
 
-            if (formData.percentage != "" && typeof formData.percentage == 'number') {
+            if (formData.percentage != "" && !$.isNumeric(formData.percentage)) {
                 Swal.fire(
                     'Oops!',
                     'Please make sure the tax value is a number',
@@ -1676,19 +1676,18 @@ if (auth == undefined) {
                 );
             }
             else {
-                // if (typeof formData.till === 'number') {
-                formData['till'] = parseInt(formData['till'])     
-                formData['app'] = $('#app').find('option:selected').text();
+                if (isNumeric(formData.till)) {
+                    formData['app'] = $('#app').find('option:selected').text();
                     storage.set('settings', formData);
                     ipcRenderer.send('app-reload', '');
-                // }
-                // else {
-                //     Swal.fire(
-                //         'Oops!',
-                //         'Till number must be a number!',
-                //         'warning'
-                //     );
-                // }
+                }
+                else {
+                    Swal.fire(
+                        'Oops!',
+                        'Till number must be a number!',
+                        'warning'
+                    );
+                }
 
             }
 
