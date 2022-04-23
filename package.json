@@ -11,6 +11,7 @@
       "buildResources": "assets"
     }
   },
+  
   "dependencies": {
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
@@ -58,9 +59,11 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/publisher-github": "*",
     "cross-env": "^6.0.3",
     "electron-builder": "^21.2.0",
     "electron-is-dev": "^1.1.0",
     "nodemon": "^1.19.3"
   }
+  
 }
