@@ -1,32 +1,15 @@
-# name of your github action
-name: TEST
-# this will help you specify where to run
-on:
-  push:
-    branches:
-      # this will run on the electron branch
-      - main
-# this is where the magic happens, each job happens in parallel btw
+name: Build
+on: [push, pull_request]
+
 jobs:
-  build_on_mac:
-    runs-on: macOS-latest
+  build_on_win:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@master
-        with:
-          ref: electron
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@master
         with:
-          node-version: 10.16
-      - name: see directory
-        run: ls
-build_on_win:
-  runs-on: windows-2016
-  steps:
-    - uses: actions/checkout@master
-      with:
-        ref: feature/github-actions
-    - uses: actions/setup-node@master
-      with:
-        node-version: 10.16
-    - name: see directory
-      run: ls
+          node-version: 14
+      - name: install dependencies
+        run: npm install
+      - name: build
+        run: npm run package-win
