@@ -1,12 +1,8 @@
 name: Release
 on:
   push:
-    branches:
-      - main
-      - rewrite
-  release:
-    types:
-      - created
+    tags:
+      - "v*"
 jobs:
   publish_on_win:
     runs-on: windows-latest

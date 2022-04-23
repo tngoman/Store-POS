@@ -28,12 +28,13 @@
           },
           "publishers": [
             {
-              "name": "POS",
+              "name": "@electron-forge/publisher-github",
               "config": {
                 "repository": {
                   "owner": "thereaper90917",
                   "name": "Store-POS"
-                }
+                },
+                "draft": true
               }
             }
           ]
