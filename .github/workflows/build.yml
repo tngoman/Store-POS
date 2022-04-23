@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - "rewrite/**"
+      - rewrite
 
 jobs:
   build_on_win:
