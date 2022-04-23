@@ -1,93 +1,80 @@
-const setupEvents = require('./installers/setupEvents')
- if (setupEvents.handleSquirrelEvent()) {
-    return;
- }
- 
-const server = require('./server');
-const {app, BrowserWindow, ipcMain} = require('electron');
-const path = require('path')
+const setupEvents = require("./installers/setupEvents");
+if (setupEvents.handleSquirrelEvent()) {
+  return;
+}
 
-const contextMenu = require('electron-context-menu');
+const server = require("./server");
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
-let mainWindow
+const contextMenu = require("electron-context-menu");
+
+let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1500,
     height: 1200,
     frame: false,
-    minWidth: 1200, 
+    minWidth: 1200,
     minHeight: 750,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-      contextIsolation: false
+      contextIsolation: false,
     },
   });
 
   mainWindow.maximize();
   mainWindow.show();
 
-  mainWindow.loadURL(
-    `file://${path.join(__dirname, 'index.html')}`
-  )
+  mainWindow.loadURL(`file://${path.join(__dirname, "index.html")}`);
 
-  mainWindow.on('closed', () => {
-    mainWindow = null
-  })
+  mainWindow.on("closed", () => {
+    mainWindow = null;
+  });
 }
 
+app.on("ready", createWindow);
 
-app.on('ready', createWindow)
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
-})
+});
 
-app.on('activate', () => {
+app.on("activate", () => {
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
-})
+});
 
+ipcMain.on("app-quit", (evt, arg) => {
+  app.quit();
+});
 
-
-ipcMain.on('app-quit', (evt, arg) => {
-  app.quit()
-})
-
-
-ipcMain.on('app-reload', (event, arg) => {
+ipcMain.on("app-reload", (event, arg) => {
   mainWindow.reload();
 });
 
-
-
 contextMenu({
   prepend: (params, browserWindow) => [
-     
-      {label: 'DevTools',
-       click(item, focusedWindow){
+    {
+      label: "DevTools",
+      click(item, focusedWindow) {
         focusedWindow.toggleDevTools();
-      }
+      },
     },
-     { 
-      label: "Reload", 
-        click() {
-          mainWindow.reload();
-      } 
-    // },
-    // {  label: 'Quit',  click:  function(){
-    //    mainWindow.destroy();
-    //     mainWindow.quit();
-    // } 
-  }  
+    {
+      label: "Reload",
+      click() {
+        mainWindow.reload();
+      },
+      // },
+      // {  label: 'Quit',  click:  function(){
+      //    mainWindow.destroy();
+      //     mainWindow.quit();
+      // }
+    },
   ],
-
 });
-
- 
-
- 
