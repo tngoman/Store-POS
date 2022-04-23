@@ -1,5 +1,9 @@
 name: Release
 on:
+push:
+    branches:
+      - main
+      - rewrite
   release:
     types:
       - created
