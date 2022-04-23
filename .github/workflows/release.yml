@@ -1,8 +1,8 @@
 name: Release
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types:
+      - created
 jobs:
   publish_on_win:
     runs-on: windows-latest
