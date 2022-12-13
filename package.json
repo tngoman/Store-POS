@@ -19,7 +19,7 @@
     "electron-context-menu": "^0.15.1",
     "electron-store": "^5.1.0",
     "electron-winstaller": "^4.0.0",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-fileupload": "^1.1.6",
     "html2canvas": "^1.0.0-rc.5",
     "http": "0.0.0",
