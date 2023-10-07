@@ -32,10 +32,9 @@
     "moment": "^2.24.0",
     "multer": "^1.4.2",
     "nedb": "^1.8.0",
-    "nodemon": "^1.14.12",
     "path": "^0.12.7",
     "print-js": "^1.0.63",
-    "socket.io": "^2.4.0",
+    "socket.io": "^4.7.2",
     "sweetalert2": "^9.5.4",
     "xmlhttprequest": "^1.8.0"
   },
@@ -58,8 +57,8 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
-    "electron-builder": "^21.2.0",
+    "electron-builder": "^24.6.4",
     "electron-is-dev": "^1.1.0",
-    "nodemon": "^1.19.3"
+    "nodemon": "^3.0.1"
   }
 }
