@@ -35,6 +35,7 @@ inventoryDB.ensureIndex({ fieldName: '_id', unique: true });
  
 app.get( "/", function ( req, res ) {
     res.send( "Inventory API" );
+    console.log(process.env.APPDATA);
 } );
 
 
@@ -90,6 +91,7 @@ app.post( "/product", upload.single('imagename'), function ( req, res ) {
     let Product = {
         _id: parseInt(req.body.id),
         price: req.body.price,
+        bprice: req.body.bprice,
         category: req.body.category,
         quantity: req.body.quantity == "" ? 0 : req.body.quantity,
         name: req.body.name,

@@ -1,3 +1,4 @@
+window.onload = function(){
 let cart = [];
 let index = 0;
 let allUsers = [];
@@ -1494,23 +1495,24 @@ if (auth == undefined) {
             let products = [...allProducts];
             let product_list = '';
             let counter = 0;
-            $('#product_list').empty();
             $('#productList').DataTable().destroy();
 
             products.forEach((product, index) => {
-
+                console.log(product.bprice)
+                console.log(process.env.APPDATA);
                 counter++;
 
                 let category = allCategories.filter(function (category) {
                     return category._id == product.category;
                 });
 
-
                 product_list += `<tr>
             <td><img id="`+ product._id + `"></td>
             <td><img style="max-height: 50px; max-width: 50px; border: 1px solid #ddd;" src="${product.img == "" ? "./assets/images/default.jpg" : img_path + product.img}" id="product_img"></td>
             <td>${product.name}</td>
             <td>${settings.symbol}${product.price}</td>
+            <td>${settings.symbol}${product.bprice}</td>
+            <td>${settings.symbol}${parseInt(product.price)-parseInt(product.bprice)}</td>
             <td>${product.stock == 1 ? product.quantity : 'N/A'}</td>
             <td>${category.length > 0 ? category[0].name : ''}</td>
             <td class="nobr"><span class="btn-group"><button onClick="$(this).editProduct(${index})" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button><button onClick="$(this).deleteProduct(${product._id})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></span></td></tr>`;
@@ -1949,6 +1951,7 @@ function loadTransactions() {
             $('#transactionList').DataTable().destroy();
 
             allTransactions = [...transactions];
+            let totalProfit = 0;
 
             transactions.forEach((trans, index) => {
 
@@ -1970,16 +1973,28 @@ function loadTransactions() {
                     users.push(trans.user_id);
                 }
 
+                let buyingPrice = 0;
+                trans.items.forEach(item=>{
+                    let this_product = allProducts.find(a=>a._id==item.id)
+                    console.log(this_product)
+                    if(this_product){
+                        buyingPrice+=parseInt(this_product.bprice)*item.quantity
+                    }
+                })
+                console.log(allProducts)
                 counter++;
+                let profit = parseInt(trans.subtotal)-buyingPrice
+                totalProfit+=profit
                 transaction_list += `<tr>
                                 <td>${trans.order}</td>
                                 <td class="nobr">${moment(trans.date).format('YYYY MMM DD hh:mm:ss')}</td>
                                 <td>${settings.symbol + trans.total}</td>
                                 <td>${trans.paid == "" ? "" : settings.symbol + trans.paid}</td>
                                 <td>${trans.change ? settings.symbol + Math.abs(trans.change).toFixed(2) : ''}</td>
-                                <td>${trans.paid == "" ? "" : trans.payment_type == 0 ? "Cash" : 'Card'}</td>
+                                <td>${trans.paid == "" ? "" : trans.payment_type}</td>
                                 <td>${trans.till}</td>
                                 <td>${trans.user}</td>
+                                <td>${profit}</td>
                                 <td>${trans.paid == "" ? '<button class="btn btn-dark"><i class="fa fa-search-plus"></i></button>' : '<button onClick="$(this).viewTransaction(' + index + ')" class="btn btn-info"><i class="fa fa-search-plus"></i></button></td>'}</tr>
                     `;
 
@@ -2039,6 +2054,7 @@ function loadTransactions() {
                     });
                 }
             });
+            document.querySelector('#total_profits').querySelector('#counter').innerHTML = totalProfit
         }
         else {
             Swal.fire(
@@ -2357,5 +2373,5 @@ $('#quit').click(function () {
         }
     });
 });
-
+}
 
