@@ -50,10 +50,11 @@
                             <button id="viewCustomerOrders" data-toggle="modal" data-target="#customerModal" type="button" onclick="$(this).getCustomerOrders()" class="btn btn-info waves-effect waves-light">
                                     <span class="btn-label"><i class="fa fa-user"></i> </span> Customer Orders
                             </button>
-                        
+                            
+                            <a href="./selling.html" class="btn btn-info waves-effect waves-light">
+                                Sales
+                            </a>                        
                     </div>
-
-
 
                     
                     <img  class="loading m-t-5" style="margin-left: 35%" height="50px" src="assets/images/loading.gif" alt="">
@@ -167,14 +168,15 @@
                                                 <div id="counter">0</div>
                                             </div>
                                 
-                                            <div id="total_items" class="btn-info">
-                                                <h5>ITEMS</h5>
+                                            <div id="total_profits" class="btn-success" style="padding-bottom: 40px; border-radius: 7px;">
+                                                <h5>PROFITS</h5>
                                                 <div id="counter">0</div>
                                             </div>
+                                            <br>
 
                                             <div id="total_products" class="btn-default">
                                                 <h5>PRODUCTS</h5>
-                                                <div id="counter">0</div>
+                                                <div id="counter"></div>
                                             </div>
                                                                          
                                     </div>
@@ -194,6 +196,7 @@
                                         <th>Method</th>
                                         <th>Till</th>
                                         <th>Cashier</th>
+                                        <th>Profit</th>
                                         <th>View</th>
                                     </tr>
                                 </thead>
@@ -559,6 +562,10 @@
                             <input type="text" required="required" name="price" placeholder="Price" class="form-control" id="product_price">
                         </div>
                         <div class="form-group">
+                            <label for="userName">Buying Price</label>
+                            <input type="text" required="required" name="bprice" placeholder="Price" class="form-control" id="product_price">
+                        </div>
+                        <div class="form-group">
                             <label for="userName">Stock</label>
                             <input type="text" name="quantity" placeholder="Available stock" class="form-control" id="quantity">
                         </div>
@@ -615,7 +622,7 @@
                             <button class="btn btn-white pull-right" id="print_list">Download</button>
                         </h4>                        
                     </div>
-                     <div class="modal-body" id="all_products" style="padding: 20px; padding-right: 40px;"> 
+                     <div class="modal-body" id="all_products" style="padding: 20px; padding-right: 40px; overflow-x: scroll;"> 
                         <table class="table table-bordered" id="productList">
                             <thead>
                                 <tr>                                                                      
@@ -623,6 +630,8 @@
                                     <th>Item</th>
                                     <th>Name</th>                                      
                                     <th>Price</th>
+                                    <th>Buying Price</th>
+                                    <th>Profit</th>
                                     <th>Stock</th>
                                     <th>Category</th>
                                     <th>Action</th>
@@ -973,6 +982,8 @@ require('./renderer.js');
     
     <script>
 
+        let profitCount = document.querySelector('#total_profits').querySelector('#counter')
+        console.log(profitCount)
     // $(function () {
     //  "use strict";
     //     jqKeyboard.init({

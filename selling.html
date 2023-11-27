@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Point Of Sale</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />    
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/chosen/chosen.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />    
+    <link href="assets/plugins/dataTables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/dataTables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />    
+    <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="button-list pull-left m-t-15 m-l-10">  
+                    <div class="btn-group p_one">
+                        <button id="" type="button" onclick="history.back()" class="btn btn-danger waves-effect waves-light me-5">
+                                <span class="btn-label"><i class="fa fa-arrow-left"></i> </span> Back
+                        </button>
+                    
+                        <a href="./selling.html" class="btn btn-info waves-effect waves-light ms-2">
+                            Sales
+                        </a>                        
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="sales-table">
+            <div class="row" style="display: flex; justify-content: center; margin-top: 100px;">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Invoice</th>
+                            <th scope="col">Items ordered</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Tax</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Payment_type</th>
+                            <th scope="col">Till</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody id="sales-table">
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+            <div class="row" style="display: flex; justify-content: center; margin-top: 100px;">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Invoice</th>
+                            <th scope="col">Items ordered</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Tax</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Payment_type</th>
+                            <th scope="col">Till</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody id="real-sales-table">
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/selling.js"></script>
+    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/plugins/chosen/chosen.jquery.min.js"></script>
+    <script src="assets/plugins/jquery-ui/jquery.form.min.js"></script>
+    <script src="assets/plugins/daterangepicker/daterangepicker.min.js"></script>
+    <script src="assets/plugins/dataTables/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/dataTables/jquery.dataTables.bootstrap.js"></script>
+    <script src="assets/plugins/dataTables/dataTables.buttons.min.js"></script>
+    <script src="assets/plugins/dataTables/buttons.html5.min.js"></script>
+    <script src="assets/plugins/dataTables/pdfmake.min.js"></script>
+    <script src="assets/plugins/dataTables/vfs_fonts.js"></script>
+</body>
+</html>

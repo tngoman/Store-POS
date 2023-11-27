@@ -2,12 +2,14 @@ let express = require("express"),
   http = require("http"),
   app = require("express")(),
   server = http.createServer(app),
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+  Datastore = require("nedb");
 
 const PORT = process.env.PORT || 8001;
 
 console.log("Server started");
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.all("/*", function(req, res, next) {
@@ -35,5 +37,15 @@ app.use("/api/categories", require("./api/categories"));
 app.use("/api/settings", require("./api/settings"));
 app.use("/api/users", require("./api/users"));
 app.use("/api", require("./api/transactions"));
+
+app.get("/selling", (req, res)=>{
+  let transactionsDB = new Datastore({
+    filename: process.env.APPDATA+"/POS/server/databases/transactions.db",
+    autoload: true
+  });
+  transactionsDB.find({}, function(err, docs) {
+    res.json(docs);
+  });
+});
 
 server.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
