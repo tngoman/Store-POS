@@ -15,7 +15,6 @@
     "async": "^2.6.0",
     "body-parser": "^1.18.2",
     "btoa": "^1.2.1",
-    "electron": ">=13.6.6",
     "electron-context-menu": "^0.15.1",
     "electron-store": "^5.1.0",
     "electron-winstaller": "^4.0.0",
@@ -58,6 +57,7 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
+    "electron": "^31.3.0",
     "electron-builder": "^21.2.0",
     "electron-is-dev": "^1.1.0",
     "nodemon": "^1.19.3"
