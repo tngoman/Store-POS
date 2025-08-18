@@ -40,7 +40,7 @@
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "electron": "cross-env NODE_ENV=dev nodemon --exec \"\"electron .\"\"",
+    "electron": "cross-env NODE_ENV=dev nodemon --exec \"npx electron .\"",
     "electron-build": "electron-builder",
     "package-win": "electron-packager . POS --overwrite --asar=false --platform=win32 --arch=x64 --icon=assets/images/icon.ico --prune=true --out=release-builds --version-string.ProductName=\"POS\""
   },
