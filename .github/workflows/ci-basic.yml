@@ -1,0 +1,61 @@
+name: ci-basic-electron
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Install & Optional Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (if present)
+        run: npm run lint --if-present
+
+      - name: Build (if present)
+        run: npm run build --if-present
+
+      # لا نشغّل UI لـ Electron. نحاول أي سكربت pack/dist إن وُجد.
+      - name: Package (if present)
+        shell: bash
+        run: |
+          npm run pack --if-present || true
+          npm run dist --if-present || true
+
+      - name: Show package scripts (debug)
+        run: node -p "Object.keys(require('./package.json').scripts||{})"
+
+      - name: Upload build artifacts (if any)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ runner.os }}-artifacts
+          path: |
+            dist/**
+            out/**
+            release/**
+            installers/**/*
+          if-no-files-found: ignore
+          retention-days: 7
