@@ -10,6 +10,18 @@ function getPexelsKey() {
   return (row?.pexels_api_key || '').trim();
 }
 
+function isAllowedPexelsUrl(value) {
+  let parsed;
+  try {
+    parsed = new URL(String(value));
+  } catch {
+    return false;
+  }
+  if (parsed.protocol !== 'https:') return false;
+  const host = parsed.hostname.toLowerCase();
+  return host === 'pexels.com' || host.endsWith('.pexels.com');
+}
+
 function mapMedia(row) {
   return {
     id: row.id,
@@ -143,6 +155,9 @@ export default function mediaRouter(uploadsPath) {
     const imageUrl = body.imageUrl;
     if (!photoId || !imageUrl) {
       return res.status(400).json({ error: 'photoId and imageUrl are required' });
+    }
+    if (!isAllowedPexelsUrl(imageUrl)) {
+      return res.status(400).json({ error: 'imageUrl must be an https Pexels URL' });
     }
 
     const existing = getDb()
